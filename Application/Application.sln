@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VXEN.TestApp", "VXEN.TestAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VXEN.Services", "VXEN.Services\VXEN.Services.csproj", "{63F2E2A7-8C5E-4072-910B-072F9070BB34}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{A70E4B97-2D82-4CB7-8A09-4FAAE356EEF0}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\nuget.exe = Nuget\nuget.exe
+		Nuget\Package.nuspec = Nuget\Package.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

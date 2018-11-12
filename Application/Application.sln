@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VXEN.Models", "VXEN.Models\VXEN.Models.csproj", "{425ACB17-1CD2-4420-AB7C-5DD3684AE8FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VXEN.TestApp", "VXEN.TestApp\VXEN.TestApp.csproj", "{3914A880-4A6F-4A92-B80B-F5C5D9A324B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VXEN.Services", "VXEN.Services\VXEN.Services.csproj", "{63F2E2A7-8C5E-4072-910B-072F9070BB34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{425ACB17-1CD2-4420-AB7C-5DD3684AE8FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425ACB17-1CD2-4420-AB7C-5DD3684AE8FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425ACB17-1CD2-4420-AB7C-5DD3684AE8FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425ACB17-1CD2-4420-AB7C-5DD3684AE8FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3914A880-4A6F-4A92-B80B-F5C5D9A324B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3914A880-4A6F-4A92-B80B-F5C5D9A324B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3914A880-4A6F-4A92-B80B-F5C5D9A324B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3914A880-4A6F-4A92-B80B-F5C5D9A324B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F2E2A7-8C5E-4072-910B-072F9070BB34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F2E2A7-8C5E-4072-910B-072F9070BB34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F2E2A7-8C5E-4072-910B-072F9070BB34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F2E2A7-8C5E-4072-910B-072F9070BB34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

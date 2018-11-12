@@ -328,3 +328,12 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Ignore downloaded schema files
+express.xsd
+express.cs
+expressservices.xsd
+expressservices.cs
+expressreporting.xsd
+expressreporting.cs
+secrets.xml

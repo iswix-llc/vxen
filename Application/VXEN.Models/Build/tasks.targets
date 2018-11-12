@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="DownloadSchemas" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.core.dll">
+    <ParameterGroup />
+    <Task>
+      <Reference Include="System" />
+      <Using Namespace="System.Net" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+using (WebClient wc = new WebClient())
+{
+  wc.DownloadFile("https://transaction.elementexpress.com/express.xsd", @"Transaction\express.xsd");
+  wc.DownloadFile("https://services.elementexpress.com/expressservices.xsd", @"Services\expressservices.xsd");
+  wc.DownloadFile("https://reporting.elementexpress.com/expressreporting.xsd", @"Reporting\expressreporting.xsd");
+}
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+</Project>

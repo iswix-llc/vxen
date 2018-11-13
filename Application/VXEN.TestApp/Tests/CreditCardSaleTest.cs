@@ -16,6 +16,7 @@ namespace VXEN.TestApp.Tests
             var transaction = new typeTransaction();
             transaction.TransactionAmount = 100m;
             transaction.TransactionAmountSpecified = true;
+            transaction.ReferenceNumber = "AIS1234";
 
             var card = new typeCard();
             card.CardNumber = "5499990123456781";
@@ -31,19 +32,17 @@ namespace VXEN.TestApp.Tests
 
 
             Server server = new Server();
-            //var task = server.SendToApiASync<typeCreditCardSale>(Settings.apiURL, creditCardSale);
-            //task.Wait();
-            //string data = task.Result;
+            var task = server.SendToApiASync<typeCreditCardSale>(Settings.apiURL, creditCardSale);
+            task.Wait();
 
-            string data = server.SendToApiSync<typeCreditCardSale>(Settings.apiURL, creditCardSale);
+            XDocument responseDocument = XDocument.Parse(task.Result);
 
-            var response = Serialization.Deserialize<CreditCardSaleResponse>(data);
-            Console.WriteLine($"Response Code: {response.Response.ExpressResponseCode}  Response Description: {response.Response.ExpressResponseMessage}");
+
+            string expressResponseCode = responseDocument.GetElementValueFromResponse("ExpressResponseCode");
+            string expressResponseMessage = responseDocument.GetElementValueFromResponse("ExpressResponseMessage");
+            Console.WriteLine($"{expressResponseCode} : {expressResponseMessage}");
             Console.WriteLine("Full Response:");
-
-            XDocument doc = XDocument.Parse(data);
-            Console.WriteLine(doc.ToString());
-
+            Console.WriteLine(responseDocument.ToString());
         }
     }
 }

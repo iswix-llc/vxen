@@ -38,12 +38,13 @@ namespace VXEN.TestApp.Tests
             task.Wait();
 
             string data = task.Result;
-            var response = Serialization.Deserialize<CheckSaleResponse>(data);
-            Console.WriteLine($"Response Code: {response.Response.ExpressResponseCode}  Response Description: {response.Response.ExpressResponseMessage}");
-            Console.WriteLine("Full Response:");
+            XDocument responseDocument = XDocument.Parse(task.Result);
 
-            XDocument doc = XDocument.Parse(data);
-            Console.WriteLine(doc.ToString());
+            string expressResponseCode = responseDocument.GetElementValueFromResponse("ExpressResponseCode");
+            string expressResponseMessage = responseDocument.GetElementValueFromResponse("ExpressResponseMessage");
+            Console.WriteLine($"{expressResponseCode} : {expressResponseMessage}");
+            Console.WriteLine("Full Response:");
+            Console.WriteLine(responseDocument.ToString());
 
         }
     }

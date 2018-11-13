@@ -50,7 +50,6 @@
     </Compile>
     <Compile Include="Transaction\enums.cs" />
     <Compile Include="Transaction\express-extensions.cs" />
-    <Compile Include="Transaction\express-responses.cs" />
     <Compile Include="Transaction\express.cs">
       <DependentUpon>express.xsd</DependentUpon>
     </Compile>

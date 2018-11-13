@@ -46,6 +46,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\CheckSaleTest.cs" />
     <Compile Include="Tests\CreditCardSaleTest.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

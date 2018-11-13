@@ -7,7 +7,7 @@ namespace VXEN.TestApp
     {
         static void Main(string[] args)
         {
-            Test.CreditCardSale();
+            Test.CheckSaleTest();
             Console.WriteLine("Press Any Key To Exit");
             Console.Read();
         }

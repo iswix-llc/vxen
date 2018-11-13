@@ -439,4 +439,241 @@ namespace VXEN.Models.Transaction
     }
 
 
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "https://transaction.elementexpress.com")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "https://transaction.elementexpress.com", IsNullable = false)]
+    public partial class CheckSaleResponse
+    {
+
+        private CheckSaleResponseResponse responseField;
+
+        /// <remarks/>
+        public CheckSaleResponseResponse Response
+        {
+            get
+            {
+                return this.responseField;
+            }
+            set
+            {
+                this.responseField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "https://transaction.elementexpress.com")]
+    public partial class CheckSaleResponseResponse
+    {
+
+        private byte expressResponseCodeField;
+
+        private string expressResponseMessageField;
+
+        private byte hostResponseCodeField;
+
+        private string hostResponseMessageField;
+
+        private uint expressTransactionDateField;
+
+        private uint expressTransactionTimeField;
+
+        private string expressTransactionTimezoneField;
+
+        private CheckSaleResponseResponseTransaction transactionField;
+
+        /// <remarks/>
+        public byte ExpressResponseCode
+        {
+            get
+            {
+                return this.expressResponseCodeField;
+            }
+            set
+            {
+                this.expressResponseCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ExpressResponseMessage
+        {
+            get
+            {
+                return this.expressResponseMessageField;
+            }
+            set
+            {
+                this.expressResponseMessageField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte HostResponseCode
+        {
+            get
+            {
+                return this.hostResponseCodeField;
+            }
+            set
+            {
+                this.hostResponseCodeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string HostResponseMessage
+        {
+            get
+            {
+                return this.hostResponseMessageField;
+            }
+            set
+            {
+                this.hostResponseMessageField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint ExpressTransactionDate
+        {
+            get
+            {
+                return this.expressTransactionDateField;
+            }
+            set
+            {
+                this.expressTransactionDateField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint ExpressTransactionTime
+        {
+            get
+            {
+                return this.expressTransactionTimeField;
+            }
+            set
+            {
+                this.expressTransactionTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ExpressTransactionTimezone
+        {
+            get
+            {
+                return this.expressTransactionTimezoneField;
+            }
+            set
+            {
+                this.expressTransactionTimezoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        public CheckSaleResponseResponseTransaction Transaction
+        {
+            get
+            {
+                return this.transactionField;
+            }
+            set
+            {
+                this.transactionField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "https://transaction.elementexpress.com")]
+    public partial class CheckSaleResponseResponseTransaction
+    {
+
+        private uint transactionIDField;
+
+        private byte referenceNumberField;
+
+        private string processorNameField;
+
+        private string transactionStatusField;
+
+        private byte transactionStatusCodeField;
+
+        /// <remarks/>
+        public uint TransactionID
+        {
+            get
+            {
+                return this.transactionIDField;
+            }
+            set
+            {
+                this.transactionIDField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte ReferenceNumber
+        {
+            get
+            {
+                return this.referenceNumberField;
+            }
+            set
+            {
+                this.referenceNumberField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ProcessorName
+        {
+            get
+            {
+                return this.processorNameField;
+            }
+            set
+            {
+                this.processorNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string TransactionStatus
+        {
+            get
+            {
+                return this.transactionStatusField;
+            }
+            set
+            {
+                this.transactionStatusField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte TransactionStatusCode
+        {
+            get
+            {
+                return this.transactionStatusCodeField;
+            }
+            set
+            {
+                this.transactionStatusCodeField = value;
+            }
+        }
+    }
+
+
+
 }

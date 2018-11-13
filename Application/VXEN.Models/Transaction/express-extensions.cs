@@ -12,6 +12,12 @@ namespace VXEN.Models.Transaction
 
     }
 
+    [System.Xml.Serialization.XmlRootAttribute("CheckSale", Namespace = "https://transaction.elementexpress.com", IsNullable = false)]
+    public partial class typeCheckSale : typeTransactionObjects
+    {
+
+    }
+
 
 }
 

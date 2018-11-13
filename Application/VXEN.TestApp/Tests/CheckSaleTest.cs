@@ -34,7 +34,7 @@ namespace VXEN.TestApp.Tests
 
 
             Server server = new Server();
-            var task = server.SendToApi<typeCheckSale>(Settings.apiURL, checkSale);
+            var task = server.SendToApiASync<typeCheckSale>(Settings.apiURL, checkSale);
             task.Wait();
 
             string data = task.Result;

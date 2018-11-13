@@ -75,7 +75,8 @@ IF "%25SIGN_ISWIX%25"=="TRUE" signtool sign /fd SHA256 /tr http://timestamp.como
 xcopy /iery "$(TargetDir)*.dll" "$(SolutionDir)Nuget\Lib\net45"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>IF NOT EXIST secrets.xml copy "$(ProjectDir)secrets-seed.xml" "$(ProjectDir)secrets.xml"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -31,10 +31,12 @@ namespace VXEN.TestApp.Tests
 
 
             Server server = new Server();
-            var task = server.SendToApi<typeCreditCardSale>(Settings.apiURL, creditCardSale);
-            task.Wait();
+            //var task = server.SendToApiASync<typeCreditCardSale>(Settings.apiURL, creditCardSale);
+            //task.Wait();
+            //string data = task.Result;
 
-            string data = task.Result;
+            string data = server.SendToApiSync<typeCreditCardSale>(Settings.apiURL, creditCardSale);
+
             var response = Serialization.Deserialize<CreditCardSaleResponse>(data);
             Console.WriteLine($"Response Code: {response.Response.ExpressResponseCode}  Response Description: {response.Response.ExpressResponseMessage}");
             Console.WriteLine("Full Response:");

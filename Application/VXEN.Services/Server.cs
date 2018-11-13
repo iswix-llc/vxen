@@ -11,7 +11,27 @@ namespace VXEN.Services
 {
     public class Server
     {
-        public async Task<string> SendToApi<T>(Uri apiURL, T data)
+        public string SendToApiSync<T>(Uri apiURL, T data)
+        {
+            return SendToAPISync(apiURL, Serialization.Serialize(data));
+        }
+
+        public string SendToAPISync(Uri apiURL, string data)
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            string response = string.Empty;
+
+            using( var webClient = new WebClient())
+            {
+                webClient.Headers.Add("Content-Type", "text/xml; charset=utf-8");
+                byte[] bytes = Encoding.UTF8.GetBytes(data);
+                var result = webClient.UploadData(apiURL.AbsoluteUri, bytes);
+                response = System.Text.Encoding.Default.GetString(result);
+            }
+            return response;
+        }
+
+        public async Task<string> SendToApiASync<T>(Uri apiURL, T data)
         {
             return await SendToAPI(apiURL, Serialization.Serialize(data));
         }

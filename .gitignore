@@ -338,3 +338,5 @@ expressreporting.xsd
 expressreporting.cs
 secrets.xml
 Application/nuget/lib
+Application/VXEN.Models/VXEN.ModelGenerator.exe
+Application/VXEN.Models/VXEN.ModelGenerator.exe.config

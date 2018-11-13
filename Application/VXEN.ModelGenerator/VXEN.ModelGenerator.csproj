@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{425ACB17-1CD2-4420-AB7C-5DD3684AE8FC}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{2C1FD329-BB01-47FF-A9CF-18FC87DCF90F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VXEN.Models</RootNamespace>
-    <AssemblyName>VXEN.Models</AssemblyName>
+    <RootNamespace>VXEN.ModelGenerator</RootNamespace>
+    <AssemblyName>VXEN.ModelGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,41 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reporting\expressreporting.cs">
-      <DependentUpon>expressreporting.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Services\expressservices.cs">
-      <DependentUpon>expressservices.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Transaction\enums.cs" />
-    <Compile Include="Transaction\express-extensions.cs" />
-    <Compile Include="Transaction\express.cs">
-      <DependentUpon>express.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="Steps\Download.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Reporting\expressreporting.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Services\expressservices.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Transaction\express.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /iery "$(TargetDir)*.*" "$(SolutionDir)VXEN.Models"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <PropertyGroup>
-    <PreBuildEvent>"$(ProjectDir)VXEN.ModelGenerator.exe"
-</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>IF "%25SIGN_ISWIX%25"=="TRUE" signtool sign /tr http://timestamp.comodoca.com/ $(TargetPath)
-IF "%25SIGN_ISWIX%25"=="TRUE" signtool sign /fd SHA256 /tr http://timestamp.comodoca.com/?td=sha256 /td sha256 /as $(TargetPath)
-</PostBuildEvent>
-  </PropertyGroup>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

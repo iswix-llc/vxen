@@ -47,7 +47,6 @@
     <Compile Include="Services\expressservices.cs">
       <DependentUpon>expressservices.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Transaction\enums.cs" />
     <Compile Include="Transaction\express-transaction-extensions.cs" />
     <Compile Include="Transaction\express.cs">
       <DependentUpon>express.xsd</DependentUpon>

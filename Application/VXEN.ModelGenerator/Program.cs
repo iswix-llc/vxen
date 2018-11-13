@@ -18,10 +18,11 @@ namespace VXEN.ModelGenerator
             FileInfo fileInfo = new FileInfo(assembly.Location);
             Environment.CurrentDirectory = fileInfo.Directory.FullName;
 
-            // Download Schemas from vendor
+            // Download Schemas from VANTIV
             Download.GenerateClasses();
 
-
+            // Workaround missing classes due to XSD provided being invalid
+            CodeDom.FixMissingTransactionClasses();
         }
     }
 }

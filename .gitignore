@@ -336,6 +336,7 @@ expressservices.xsd
 expressservices.cs
 expressreporting.xsd
 expressreporting.cs
+express-transaction-extensions.cs
 secrets.xml
 Application/nuget/lib
 Application/VXEN.Models/VXEN.ModelGenerator.exe

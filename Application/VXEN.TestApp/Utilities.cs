@@ -31,13 +31,13 @@ namespace VXEN.TestApp
         {
             var terminal = new typeTerminal();
             terminal.TerminalID = Environment.MachineName;
-            terminal.CardPresentCode = $"{(int)CardPresentCode.NotPresent}";
-            terminal.CardholderPresentCode = $"{(int)CardHolderPresentCode.MailOrder}";
-            terminal.CardInputCode = $"{(int)CardInputCode.ManualKeyed}";
-            terminal.CVVPresenceCode = $"{(int)CVVPresenceCode.Provided}";
-            terminal.TerminalCapabilityCode = $"{(int)TerminalCapabilityCode.KeyEntered}";
-            terminal.TerminalEnvironmentCode = $"{(int)TerminalEnvironmentCode.Ecommerce}";
-            terminal.MotoECICode = $"{(int)MotoEciCode.Recurring}";
+            terminal.CardPresentCode = "3";
+            terminal.CardholderPresentCode = "4";
+            terminal.CardInputCode = "4";
+            terminal.CVVPresenceCode = "2";
+            terminal.TerminalCapabilityCode = "2";
+            terminal.TerminalEnvironmentCode = "6";
+            terminal.MotoECICode = $"7";
             return terminal;
         }
     }

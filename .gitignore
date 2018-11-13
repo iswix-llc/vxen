@@ -341,3 +341,5 @@ secrets.xml
 Application/nuget/lib
 Application/VXEN.Models/VXEN.ModelGenerator.exe
 Application/VXEN.Models/VXEN.ModelGenerator.exe.config
+Application/VXEN.Models/VXEN.ModelGenerator.vshost.exe
+Application/VXEN.Models/VXEN.ModelGenerator.vshost.exe.config

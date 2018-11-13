@@ -20,8 +20,8 @@ namespace VXEN.TestApp.Tests
             transaction.MarketCode = "3";
 
             var demandDepositAccount = new typeDemandDepositAccount();
-            demandDepositAccount.AccountNumber = "1663069001";
-            demandDepositAccount.RoutingNumber = "250674111";
+            demandDepositAccount.AccountNumber = "1234567890";
+            demandDepositAccount.RoutingNumber = "123456789";
             demandDepositAccount.DDAAccountType = "1";
             
 

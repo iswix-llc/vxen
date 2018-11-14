@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\express-reporting-extensions.cs" />
     <Compile Include="Reporting\expressreporting.cs">
       <DependentUpon>expressreporting.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Services\express-services-extensions.cs" />
     <Compile Include="Services\expressservices.cs">
       <DependentUpon>expressservices.xsd</DependentUpon>
     </Compile>

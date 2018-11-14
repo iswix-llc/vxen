@@ -22,7 +22,16 @@ namespace VXEN.ModelGenerator
             Download.Prebuild();
 
             // Workaround missing classes due to XSD provided being invalid
-            CodeDom.FixMissingTransactionClasses();
+            List<string> elementsToSkip = new List<string>();
+            elementsToSkip.Add("TransactionSetup");
+            elementsToSkip.Add("BatchUpload");
+            CodeDom.FixMissingTransactionClasses(@"Transaction\express.xsd", @"Transaction\express-transaction-extensions.cs", "https://transaction.elementexpress.com", "VXEN.Models.Transaction", elementsToSkip);
+
+            elementsToSkip.Clear();
+            CodeDom.FixMissingTransactionClasses(@"Services\expressservices.xsd", @"Services\express-services-extensions.cs", @"https://services.elementexpress.com", "VXEN.Models.Services", elementsToSkip);
+
+            CodeDom.FixMissingTransactionClasses(@"Reporting\expressreporting.xsd", @"Reporting\express-reporting-extensions.cs", @"https://reporting.elementexpress.com", "VXEN.Models.Reporting", elementsToSkip);
+
         }
     }
 }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
 
 namespace VXEN.ModelGenerator.Steps
 {
@@ -21,7 +17,10 @@ namespace VXEN.ModelGenerator.Steps
                 wc.DownloadFile("https://reporting.elementexpress.com/expressreporting.xsd", @"Reporting\expressreporting.xsd");
                 RunProgram(@"Transaction\express.xsd /classes /namespace:VXEN.Models.Transaction");
                 RunProgram(@"Reporting\expressreporting.xsd /classes /namespace:VXEN.Models.Reporting");
-                RunProgram(@"Services\expresservices.xsd /classes /namespace:VXEN.Models.Services");
+                RunProgram(@"Services\expressservices.xsd /classes /namespace:VXEN.Models.Services");
+                FileSystem.MoveFile("express.cs", @"Transaction\express.cs", true);
+                FileSystem.MoveFile("expressservices.cs", @"Services\expressservices.cs", true);
+                FileSystem.MoveFile("expressreporting.cs", @"Reporting\expressreporting.cs", true);
             }
 
         }

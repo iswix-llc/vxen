@@ -13,15 +13,20 @@ namespace VXEN.ModelGenerator
     {
         static void Main(string[] args)
         {
-            // Set Current Directory to EXE location
+            //Set Current Directory to EXE location
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileInfo fileInfo = new FileInfo(assembly.Location);
             Environment.CurrentDirectory = fileInfo.Directory.FullName;
 
-            // Download Schemas from VANTIV and use XSD to generate classes
+            //Download Schemas from VANTIV and use XSD to generate classes
             Download.Prebuild();
 
-            // Workaround missing classes due to XSD provided being invalid
+            // Remove unwanted attributes that was causing serialization issues
+            CodeDom.RemoveUnwantedDefaultValueAttributes(@"Transaction\express.cs");
+            CodeDom.RemoveUnwantedDefaultValueAttributes(@"Services\expressservices.cs");
+            CodeDom.RemoveUnwantedDefaultValueAttributes(@"Reporting\expressreporting.cs");
+
+            //Workaround missing classes due to XSD provided being invalid
             List<string> elementsToSkip = new List<string>();
             elementsToSkip.Add("TransactionSetup");
             elementsToSkip.Add("BatchUpload");

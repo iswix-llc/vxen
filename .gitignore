@@ -345,3 +345,4 @@ Application/VXEN.Models/VXEN.ModelGenerator.vshost.exe
 Application/VXEN.Models/VXEN.ModelGenerator.vshost.exe.config
 Application/VXEN.Models/Reporting/express-reporting-extensions.cs
 Application/VXEN.Models/Services/express-services-extensions.cs
+/Application/VXEN.Models/VXEN.ModelGenerator.vshost.exe.manifest

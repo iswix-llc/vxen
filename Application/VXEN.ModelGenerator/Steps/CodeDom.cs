@@ -77,5 +77,23 @@ namespace VXEN.ModelGenerator.Steps
             }
             return value;
         }
+
+        public static void RemoveUnwantedDefaultValueAttributes(string classPath)
+        {
+            var oldLines = File.ReadAllLines(classPath).ToList<string>();
+            var newLines = new List<string>();
+
+            foreach (var oldLine in oldLines)
+            {
+                if(!oldLine.Contains("System.ComponentModel.DefaultValueAttribute"))
+                {
+                    newLines.Add(oldLine);
+                }
+            }
+
+            File.Delete(classPath);
+            File.WriteAllLines(classPath, newLines);
+            Console.WriteLine("PAK" );
+        }
     }
 }

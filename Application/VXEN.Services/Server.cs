@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace VXEN.Services
 {
-    public class Server
+    public static class Server
     {
-        public string SendToApiSync<T>(Uri apiURL, T data)
+        public static string SendToApi<T>(T data)
         {
-            return SendToAPISync(apiURL, Serialization.Serialize(data));
+            return SendToAPI(Serialization.Serialize(data));
         }
-
-        public string SendToAPISync(Uri apiURL, string data)
+        public static string SendToAPI(string data)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             string response = string.Empty;
@@ -22,24 +21,22 @@ namespace VXEN.Services
             {
                 webClient.Headers.Add("Content-Type", "text/xml; charset=utf-8");
                 byte[] bytes = Encoding.UTF8.GetBytes(data);
-                var result = webClient.UploadData(apiURL.AbsoluteUri, bytes);
+                var result = webClient.UploadData(Session.Instance.GetUri().AbsoluteUri, bytes);
                 response = System.Text.Encoding.Default.GetString(result);
             }
             return response;
         }
-
-        public async Task<string> SendToApiASync<T>(Uri apiURL, T data)
+        public static async Task<string> SendToAPIAsync<T>(T data)
         {
-            return await SendToAPI(apiURL, Serialization.Serialize(data));
+            return await SendToAPIASync(Serialization.Serialize(data));
         }
-
-        public async Task<string> SendToAPI(Uri apiURL, string data)
+        public static async Task<string> SendToAPIASync(string data)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
             using (var httpClient = new HttpClient())
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, apiURL);
+                var request = new HttpRequestMessage(HttpMethod.Post, Session.Instance.GetUri());
                 request.Content = new StringContent(data, Encoding.UTF8, "text/xml");
                 var response = await httpClient.SendAsync(request);
                 return await response.Content.ReadAsStringAsync();

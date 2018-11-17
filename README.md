@@ -46,4 +46,4 @@ This class provides two methods for posting data to the Vantive Express API.  Th
 
 Every effort has been made to ensure this library is 100% safe and secure.   A minimalist approach using model generation and no dependencies on other libraries has been used.   While precompiled and digitally signed binaries are easily available from Nuget the consumer of this library is encouraged  to fork this repos, code review every line of source and compile that source to ensure 100% confidence that this library is safe to use.    Developers are also heavily encouraged to file issues to report any concerns or improvements suggestions.    Per the license terms,  use of this software is 100% at your risk. 
 
-Please see our [tutorials](https://github.com/iswix-llc/iswix-tutorials) for more information. (WORK IN PROGRESS)
+Please see our [tutorials](https://github.com/iswix-llc/vxen-tutorials) for more information. (WORK IN PROGRESS)

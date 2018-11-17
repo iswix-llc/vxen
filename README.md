@@ -40,10 +40,10 @@ Due to the reponse handling issues detailed in the previous paragraph, a simple 
 
 ### VXEN.Services.Server
 
-This class provides two methods for posting data to the Vantive Express API.  The SendToAPI method use Sync (webclient) and the SendToAPIAsync uses ASync (httpclient) techniques.   Each of those methods have overloads that support both string XML data or <T> generic types with automatic serialization to XML using the Serialization class.     These methods do not require an API Uri as this is automatically obtained from the Session singleton.
+This class provides two methods for posting data to the Vantive Express API.  The SendToAPI method uses synchronous  (System.Net.WebClient) and the SendToAPIAsync uses asynchronous (System.Net.Http.HttpClient) techniques.   Each of those methods have overloads that support both string XML data or <T> generic types with automatic serialization to XML using the Serialization class.     These methods do not require an API Uri as this is automatically obtained from the Session singleton.
 
 ## Library Security
 
 Every effort has been made to ensure this library is 100% safe and secure.   A minimalist approach using model generation and no dependencies on other libraries has been used.   While precompiled and digitally signed binaries are easily available from Nuget the consumer of this library is encouraged  to fork this repos, code review every line of source and compile that source to ensure 100% confidence that this library is safe to use.    Developers are also heavily encouraged to file issues to report any concerns or improvements suggestions.    Per the license terms,  use of this software is 100% at your risk. 
 
-Please see our [tutorials](https://github.com/iswix-llc/iswix-tutorials) for more information. 
+Please see our [tutorials](https://github.com/iswix-llc/iswix-tutorials) for more information. (WORK IN PROGRESS)

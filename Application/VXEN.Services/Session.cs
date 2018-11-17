@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using VXEN.Models.Transaction;
@@ -38,7 +39,14 @@ namespace VXEN.Services
 
         public void ConfigureUri(string uri)
         {
-            _uri = new Uri(uri);
+            if (_uri == null)
+            {
+                _uri = new Uri(uri);
+            }
+            else
+            {
+                throw new SecurityException("The URI has already been configured and may not be changed in order to prevent hijacking attacks.");
+            }
         }
 
         public T GetApplication<T>()

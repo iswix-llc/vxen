@@ -26,6 +26,22 @@ This namespace contains classes for the Services API.  Examples: typePaymentAcco
 
 VXEN Services is an optional library that provides several classes to assist in developing your application
 
+## VXEN.ENUMS
+
+The XSD in most cases doesn't include enumerations that are defined in the API documentation.  In the few cases it does, the Microsoft XSD.exe tool doesn't generate the enums with suitable member names.  
+
+### VXEN.ENUMS.Reporting
+
+Custom authored reporting enumerations will exist in this namespace when they become created.  Pull requests are welcome.
+
+### VXEN.ENUMS.Services
+
+Custom authored services enumerations will exist in this namespace when they become created.  Pull requests are welcome.
+
+### VXEN.ENUMS.Transaction
+
+Custom authored transaction enumerations will exist in this namespace when they become created.  Pull requests are welcome.
+
 ### VXEN.Services.Session 
 
 Session.Instance() is a static method that provides a Session singleton for easy access to application, credentials, terminal and api URL information anywhere in your application. For security purposes the API URL can only be set once.   Any attempt to change the URL during the life of the application will throw a SecurityException.  While Uri is required to be configured the other properties may be ignored if you are concerned this will make them too exposed within your application.

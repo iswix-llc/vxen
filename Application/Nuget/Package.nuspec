@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>vxen</id>
-    <version>1.0.15</version>
+    <version>1.0.26</version>
     <authors>iswix-llc</authors>
     <owners>iswix-llc</owners>
     <licenseUrl>https://github.com/iswix-llc/vxen/blob/master/LICENSE</licenseUrl>
@@ -12,6 +12,7 @@
     <releaseNotes>This is a brand new work in progress project. Please contact me with any questions.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>vantive express csharp dotnet xml api payments</tags>
+	<iconUrl>https://github.com/iswix-llc/vxen-tutorials/blob/master/Images/vxen.png</iconUrl>
   </metadata>
   <files>
     <file src="lib\**" target="lib" />

@@ -12,7 +12,7 @@
     <releaseNotes>This is a brand new work in progress project. Please contact me with any questions.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>vantive express csharp dotnet xml api payments</tags>
-	<iconUrl>https://github.com/iswix-llc/vxen-tutorials/blob/master/Images/vxen.png</iconUrl>
+	<iconUrl>https://raw.githubusercontent.com/iswix-llc/vxen-tutorials/master/Images/vxen.png</iconUrl>
   </metadata>
   <files>
     <file src="lib\**" target="lib" />

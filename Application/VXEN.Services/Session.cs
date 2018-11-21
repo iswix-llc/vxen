@@ -13,7 +13,6 @@ namespace VXEN.Services
         dynamic _application;
         dynamic _credentials;
         typeTerminal _terminal;
-        Uri _uri;
 
         private static readonly Lazy<Session> lazy =  new Lazy<Session>(() => new Session());
         public static Session Instance { get { return lazy.Value; } }
@@ -37,17 +36,7 @@ namespace VXEN.Services
             _terminal = terminal;
         }
 
-        public void ConfigureUri(string uri)
-        {
-            if (_uri == null)
-            {
-                _uri = new Uri(uri);
-            }
-            else
-            {
-                throw new SecurityException("The URI has already been configured and may not be changed in order to prevent hijacking attacks.");
-            }
-        }
+        public APILifeCycle APILifeCycle { get; set; }
 
         public T GetApplication<T>()
         {
@@ -81,11 +70,6 @@ namespace VXEN.Services
         {
             return _terminal;
         }
-        
-        public Uri GetUri()
-        {
-            return _uri;
-        }
-
     }
+    public enum APILifeCycle { Certification, Production };
 }

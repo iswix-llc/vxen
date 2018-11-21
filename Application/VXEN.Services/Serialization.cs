@@ -1,18 +1,19 @@
 ﻿using System.IO;
 using System.Reflection;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace VXEN.Services
 {
     public class Serialization
     {
-        public static string Serialize<T>(T data)
+        public static XDocument Serialize<T>(T data)
         {
             var xsns = GetNameSpaces<T>(data);
             var serializer = new XmlSerializer(data.GetType());
             var writer = new StringWriter();
             serializer.Serialize(writer, data, xsns);
-            return writer.ToString();
+            return XDocument.Parse(writer.ToString());
         }
 
         public static T Deserialize<T>(string data)

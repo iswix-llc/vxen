@@ -26,11 +26,11 @@ namespace VXEN.Services
             return data;
         }
 
-        public static Dictionary<string,string> GetElementValuesFromResponse(this XDocument responseDocument)
+        public static Dictionary<string,string> GetResponseAsDictionary(this XDocument responseDocument)
         {
             var elements = from e in responseDocument.Descendants()
                             select e;
-            return elements.ToDictionary(o => o.Name.ToString(), o => o.Value);
+            return elements.ToDictionary(o => o.Name.LocalName, o => o.Value);
         }
     }
 }

@@ -33,9 +33,14 @@ namespace VXEN.ModelGenerator.Steps
                 {
                     if (!elementsToSkip.Contains(elementName))
                     {
-                        codeNameSpace.Types.Add(GenerateClass(elementName, className, xmlNamespace));
+                        codeNameSpace.Types.Add(GenerateClass(elementName, elementName, className, xmlNamespace));
                     }
                 }
+            }
+
+            if (xsdPath == @"Transaction\express.xsd")
+            {
+                codeNameSpace.Types.Add(GenerateClass("TransactionSetupMethod", "TransactionSetup", "typeTransactionObjects", xmlNamespace));
             }
 
             // Create a TextWriter to a StreamWriter to the output file.
@@ -49,11 +54,11 @@ namespace VXEN.ModelGenerator.Steps
             }
         }
 
-        public static CodeTypeDeclaration GenerateClass(string elementName, string parentClassName, string rootNamespace)
+        public static CodeTypeDeclaration GenerateClass(string className, string rootElement, string parentClassName, string rootNamespace)
         {
-            CodeTypeDeclaration generatedClass = new CodeTypeDeclaration("type" + elementName);
+            CodeTypeDeclaration generatedClass = new CodeTypeDeclaration("type" + className);
             var attr = new CodeAttributeDeclaration(new CodeTypeReference(typeof(System.Xml.Serialization.XmlRootAttribute)));
-            var attributeArg1 = new CodeAttributeArgument(new CodePrimitiveExpression(elementName));
+            var attributeArg1 = new CodeAttributeArgument(new CodePrimitiveExpression(rootElement));
             var attributeArg2 = new CodeAttributeArgument("Namespace", new CodePrimitiveExpression(rootNamespace));
             var attributeArg3 = new CodeAttributeArgument("IsNullable", new CodePrimitiveExpression(false));
             attr.Arguments.Add(attributeArg1);

@@ -22,11 +22,13 @@ namespace VXEN.Services
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             string response = string.Empty;
 
-            using (var webClient = new WebClient())
+            using (var webClient = new CustomWebClient())
             {
+                webClient.Timeout = 65000;
                 webClient.Headers.Add("Content-Type", "text/xml; charset=utf-8");
                 byte[] bytes = Encoding.UTF8.GetBytes(document.ToString());
                 var result = webClient.UploadData(GetUrl(document), bytes);
+
                 response = System.Text.Encoding.Default.GetString(result);
             }
             return response;
@@ -41,6 +43,7 @@ namespace VXEN.Services
 
             using (var httpClient = new HttpClient())
             {
+                httpClient.Timeout = new TimeSpan(0,0,0,65,0);
                 var request = new HttpRequestMessage(HttpMethod.Post, GetUrl(document));
                 request.Content = new StringContent(document.ToString(), Encoding.UTF8, "text/xml");
                 SafetyCheck(document);

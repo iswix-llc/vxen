@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="ResponseHelper.cs" />
     <Compile Include="Serialization.cs" />

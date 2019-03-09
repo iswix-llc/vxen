@@ -12,11 +12,22 @@ namespace VXEN.Services
 {
     public static class Server
     {
+        public static string SendToApi<T>(T data, int timeout)
+        {
+            return SendToAPI(Serialization.Serialize(data), timeout);
+        }
+
         public static string SendToApi<T>(T data)
         {
-            return SendToAPI(Serialization.Serialize(data));
+            return SendToAPI(Serialization.Serialize(data), 65000);
         }
+
         public static string SendToAPI(XDocument document)
+        {
+            return SendToAPI(document, 65000);
+        }
+
+        public static string SendToAPI(XDocument document, int timeout)
         {
             SafetyCheck(document);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -24,7 +35,7 @@ namespace VXEN.Services
 
             using (var webClient = new CustomWebClient())
             {
-                webClient.Timeout = 65000;
+                webClient.Timeout = timeout;
                 webClient.Headers.Add("Content-Type", "text/xml; charset=utf-8");
                 byte[] bytes = Encoding.UTF8.GetBytes(document.ToString());
                 var result = webClient.UploadData(GetUrl(document), bytes);
@@ -33,17 +44,23 @@ namespace VXEN.Services
             }
             return response;
         }
+
         public static async Task<string> SendToAPIAsync<T>(T data)
         {
-            return await SendToAPIASync(Serialization.Serialize(data));
+            return await SendToAPIASync(Serialization.Serialize(data), 65000);
         }
-        public static async Task<string> SendToAPIASync(XDocument document)
+
+        public static async Task<string> SendToAPIAsync<T>(T data, int milliseconds)
+        {
+            return await SendToAPIASync(Serialization.Serialize(data), milliseconds);
+        }
+        public static async Task<string> SendToAPIASync(XDocument document, int milliseconds)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Timeout = new TimeSpan(0,0,0,65,0);
+                httpClient.Timeout = new TimeSpan(0,0,0,0, milliseconds);
                 var request = new HttpRequestMessage(HttpMethod.Post, GetUrl(document));
                 request.Content = new StringContent(document.ToString(), Encoding.UTF8, "text/xml");
                 SafetyCheck(document);
@@ -51,7 +68,6 @@ namespace VXEN.Services
                 return await response.Content.ReadAsStringAsync();
             }
         }
-
 
         private static string GetUrl(XDocument document)
         {

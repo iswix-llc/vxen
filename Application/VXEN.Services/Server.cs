@@ -29,6 +29,7 @@ namespace VXEN.Services
 
         public static string SendToAPI(XDocument document, int timeout)
         {
+            // Temporarily disabled to allow customer to proceed with certification. 
             SafetyCheck(document);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             string response = string.Empty;
@@ -63,7 +64,8 @@ namespace VXEN.Services
                 httpClient.Timeout = new TimeSpan(0,0,0,0, milliseconds);
                 var request = new HttpRequestMessage(HttpMethod.Post, GetUrl(document));
                 request.Content = new StringContent(document.ToString(), Encoding.UTF8, "text/xml");
-                SafetyCheck(document);
+                // Temporarily disabled to allow customer to proceed with certification. 
+                //SafetyCheck(document);
                 var response = await httpClient.SendAsync(request);
                 return await response.Content.ReadAsStringAsync();
             }
@@ -86,6 +88,7 @@ namespace VXEN.Services
 
         private static void SafetyCheck(XDocument document)
         {
+            // Temporarily disabled.  We need to decide if we seed this with all known test credit card numbers or we ditch the feature.
             if (Session.Instance.APILifeCycle == APILifeCycle.Certification)
             {
                 string testCreditCardPrefix = "549999012345";

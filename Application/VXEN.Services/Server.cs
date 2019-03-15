@@ -30,7 +30,7 @@ namespace VXEN.Services
         public static string SendToAPI(XDocument document, int timeout)
         {
             // Temporarily disabled to allow customer to proceed with certification. 
-            // SafetyCheck(document);
+            SafetyCheck(document);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             string response = string.Empty;
 
@@ -61,11 +61,11 @@ namespace VXEN.Services
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Timeout = new TimeSpan(0,0,0,0, milliseconds);
+                httpClient.Timeout = new TimeSpan(0, 0, 0, 0, milliseconds);
                 var request = new HttpRequestMessage(HttpMethod.Post, GetUrl(document));
                 request.Content = new StringContent(document.ToString(), Encoding.UTF8, "text/xml");
                 // Temporarily disabled to allow customer to proceed with certification. 
-                //SafetyCheck(document);
+                SafetyCheck(document);
                 var response = await httpClient.SendAsync(request);
                 return await response.Content.ReadAsStringAsync();
             }
@@ -86,31 +86,49 @@ namespace VXEN.Services
             return url;
         }
 
+        /// <summary>
+        /// Throws an exception if you send a credit card number that is not on the certification whitelist to the certification provider.
+        /// </summary>
+        /// <param name="document"></param>
         private static void SafetyCheck(XDocument document)
         {
-            // Temporarily disabled.  We need to decide if we seed this with all known test credit card numbers or we ditch the feature.
             if (Session.Instance.APILifeCycle == APILifeCycle.Certification)
             {
-                string testCreditCardPrefix = "549999012345";
-                string testCreditCardSuffix = "6781";
-                string creditCardNumber = string.Empty;
+                List<string> certificationCreditCardNumbers = GetCertificationCreditcardNumbers();
 
-                try
+                if (document.Descendants("CardNumber").Any())
                 {
-                    var elements = from e in document.Descendants()
-                                   where e.Name.LocalName == "CardNumber"
-                                   select e;
-                     creditCardNumber = elements.First().Value;
-                }
-                catch (Exception)
-                {
-                }
-
-                if (!string.IsNullOrEmpty(creditCardNumber) && !creditCardNumber.Equals(testCreditCardPrefix + testCreditCardSuffix))
-                {
-                    throw new SecurityException("You may only send the test credit card number to the certification null processor.");
+                    if (!certificationCreditCardNumbers.Contains(document.Descendants("CardNumber").First().Value))
+                    {
+                        throw new SecurityException("You may only send the test credit card number to the certification null processor.");
+                    }
                 }
             }
+        }
+
+        private static List<string> GetCertificationCreditcardNumbers()
+        {
+            //Obtained from https://developer.vantiv.com/docs/DOC-2624 on March, 15, 2019
+            //This list may change over time.  Please contact us if you need an update.
+            List<string> certificationCreditCardNumbers = new List<string>();
+            //Vantiv Integrated Payments EMV and Magstripe test cards kits
+            certificationCreditCardNumbers.Add("5413330089010681");
+            certificationCreditCardNumbers.Add("6510000000000059");
+
+            //Magstripe card profiles
+            certificationCreditCardNumbers.Add("4895281000000006");
+            certificationCreditCardNumbers.Add("5541032000004422");
+            certificationCreditCardNumbers.Add("6011000990911111");
+            certificationCreditCardNumbers.Add("341111597242000");  // This is missing a digit on their website???
+            certificationCreditCardNumbers.Add("2223000048400011");
+
+            //Two additional special use case test cards are included in your test kit that you may find helpful for MercuryPay:
+            certificationCreditCardNumbers.Add("373953244361001");
+            certificationCreditCardNumbers.Add("5439750001500222");
+
+            // Obtained from https://developer.vantiv.com/docs/DOC-1065
+            certificationCreditCardNumbers.Add("5499990123456781");
+            return certificationCreditCardNumbers;
         }
     }
 }

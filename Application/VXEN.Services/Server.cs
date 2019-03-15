@@ -30,7 +30,7 @@ namespace VXEN.Services
         public static string SendToAPI(XDocument document, int timeout)
         {
             // Temporarily disabled to allow customer to proceed with certification. 
-            SafetyCheck(document);
+            // SafetyCheck(document);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             string response = string.Empty;
 

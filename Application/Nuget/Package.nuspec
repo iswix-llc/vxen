@@ -8,10 +8,10 @@
     <licenseUrl>https://github.com/iswix-llc/vxen/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/iswix-llc/vxen</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Vantive XML Express for .NET (VXEN) is a .NET based SDK for interacting with the Vantive XML Express API.</description>
+    <description>Vantiv XML Express for .NET (VXEN) is a .NET based SDK for interacting with the Vantiv XML Express API.</description>
     <releaseNotes>This is a brand new work in progress project. Please contact me with any questions.</releaseNotes>
     <copyright>Copyright 2018</copyright>
-    <tags>vantive express csharp dotnet xml api payments</tags>
+    <tags>vantiv express csharp dotnet xml api payments</tags>
 	<iconUrl>https://raw.githubusercontent.com/iswix-llc/vxen-tutorials/master/Images/vxen.png</iconUrl>
   </metadata>
   <files>

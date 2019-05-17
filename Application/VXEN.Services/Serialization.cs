@@ -13,7 +13,15 @@ namespace VXEN.Services
             var serializer = new XmlSerializer(data.GetType());
             var writer = new StringWriter();
             serializer.Serialize(writer, data, xsns);
-            return XDocument.Parse(writer.ToString());
+            var doc = XDocument.Parse(writer.ToString());
+
+            // Remove unwanted attributes due to funky XSD (NetworkTransactionID and others that generate as "object"
+            foreach (var element in doc.Root.Descendants())
+            {
+                element.RemoveAttributes();
+            }
+
+            return doc;
         }
 
         public static T Deserialize<T>(string data)

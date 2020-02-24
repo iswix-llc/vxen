@@ -29,7 +29,7 @@ namespace VXEN.ModelGenerator.Steps
         {
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.WindowStyle = ProcessWindowStyle.Hidden;
-            psi.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools\xsd.exe";
+            psi.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7.2 Tools\xsd.exe";
             psi.Arguments = arguments;
             Process proc = Process.Start(psi);
             proc.WaitForExit();

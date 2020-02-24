@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -19,6 +20,15 @@ namespace VXEN.Services
             foreach (var element in doc.Root.Descendants())
             {
                 element.RemoveAttributes();
+            }
+
+            // Remove unwanted namespaces and all attributes
+            foreach (var element in doc.Descendants())
+            {
+                element.Name = element.Name.LocalName;
+                //// replacing all attributes with attributes that are not namespaces and their names are set to only the localname
+                element.ReplaceAttributes((from xattrib in element.Attributes().Where(xa => !xa.IsNamespaceDeclaration) select new XAttribute(xattrib.Name.LocalName, xattrib.Value)));
+                element.Attributes().Remove();
             }
 
             return doc;
